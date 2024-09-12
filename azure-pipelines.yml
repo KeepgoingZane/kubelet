@@ -10,6 +10,19 @@ trigger:
 pool:
   vmImage: ubuntu-latest
 
+jobs:
+- deployment: VMDeploy
+  displayName: Deploy to VM
+  environment: 
+   name: VMenv
+   resourceName: DESKTOP-CNNM95F
+   resourceType: virtualMachine
+  strategy:
+     runOnce:
+        deploy:   
+          steps:
+            - script: echo "Hello world"
+
 variables:
   GOBIN:  '$(system.defaultWorkingDirectory)/bin' # Go binaries path
 
